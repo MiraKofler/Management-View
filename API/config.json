@@ -1,0 +1,13 @@
+{
+    "database": {
+        "user": "postgres",
+        "host": "localhost",
+        "database": "webtech21jwt",
+        "password":"1234",
+        "port":"5432"
+    },
+	"auth": {
+        "jwt_key": "secret",
+        "expiration": "1h"
+    }
+}
