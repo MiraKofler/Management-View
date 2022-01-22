@@ -10,6 +10,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { MenuItemsComponent } from './menu-items/menu-items.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
+import {RouterModule} from "@angular/router";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

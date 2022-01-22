@@ -1,1 +1,18 @@
-<p>menu-items works!</p>
+<h1>Menu Items</h1>
+
+<div *ngFor="let menuItem of menuItems">
+
+  <div>
+    Menu Item Name: {{menuItem.name}}
+  </div>
+  <div>
+    Menu Item Id: {{menuItem.id}}
+  </div>
+
+  <input type="text" #txtText>
+
+  <button (click)="onBtnDeleteClicked(txtText.value)">Delete</button>
+
+</div>
+
+

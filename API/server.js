@@ -23,14 +23,23 @@ app.get("/", (req, res) =>
     res.status(200).send("API is running!");
 });
 
-app.get("/menuList", (req, res) =>
+app.get("/menuItem", (req, res) =>
 {
     res.setHeader('Content-Type', 'application/json');
-    pool.query("select * from menu_items").
-        then((data) =>
-        {
-            res.status(200).send(data.rows);
-        });
+    res.status(200).json({name: 'Menu Item 1', id: 5});
+
+});
+
+app.get("/menuItems", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  let array = [];
+  array.push({name: 'Menu Item 1', id: 5});
+  array.push({name: 'Menu Item 2', id: 10});
+
+
+  res.status(200).send(array);
+
 });
 
 app.get("/menuCategories", (req, res) =>
@@ -122,7 +131,7 @@ app.get("/orders", (req, res) =>
 
             function insertIntoOrders(row)
             {
-                let order = 
+                let order =
                 {
                     orderId: row.orderid,
                     status: row.status,
@@ -200,8 +209,8 @@ app.get("/resetDatabase", (req, res) =>
         "delete from menu_items;" +
         "delete from reviews;" +
         "delete from orders;"
-        ) 
-        .then(() => 
+        )
+        .then(() =>
         {
             uploadMenuCategories().
                 then(() =>
