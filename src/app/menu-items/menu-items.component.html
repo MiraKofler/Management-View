@@ -3,15 +3,19 @@
 <div *ngFor="let menuItem of menuItems">
 
   <div>
-    Menu Item Name: {{menuItem.name}}
+    Menu Item Name: {{menuItem.title}}
   </div>
   <div>
-    Menu Item Id: {{menuItem.id}}
+    Menu Item Id: {{menuItem.menuitemid}}
+  </div>
+  <div>
+    Menu Item Description: {{menuItem.itemdescription}}
+  </div>
+  <div>
+    Menu Item Price: {{menuItem.price}}
   </div>
 
-  <input type="text" #txtText>
-
-  <button (click)="onBtnDeleteClicked(txtText.value)">Delete</button>
+  <button (click)="onBtnDeleteClicked(menuItem)">Delete</button>
 
 </div>
 

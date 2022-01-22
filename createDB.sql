@@ -12,7 +12,7 @@ CREATE DATABASE webtech21project WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_
 
 ALTER DATABASE webtech21project OWNER TO postgres;
 
-\connect webtech21project
+connect webtech21project
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -43,7 +43,7 @@ create table IF NOT EXISTS public.User (
     UserName varchar,
     Password varchar,
     RoleType varchar,
-    
+
     FOREIGN KEY (RoleType) REFERENCES public.RoleType(RoleType)
 );
 
@@ -80,6 +80,12 @@ create table IF NOT EXISTS public.Category (
     CategoryId int PRIMARY KEY,
     CategoryTitle varchar,
     CategoryDescription varchar
+);
+
+create table IF NOT EXISTS public.Tables (
+    TablesId int PRIMARY KEY,
+    TablesSeats int,
+    TablesLocationDescription varchar
 );
 
 create table IF NOT EXISTS public.MenuItemCategory (

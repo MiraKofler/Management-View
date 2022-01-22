@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItemService} from "../services/menu-item.service";
 import {MenuItem} from "../models/menu-item.model";
+import {Tables} from "../models/tables.model";
 
 @Component({
   selector: 'app-menu-items',
@@ -13,6 +14,8 @@ export class MenuItemsComponent implements OnInit
 
   menuItems:MenuItem[] = [];
 
+
+
   constructor(private menuItemService:MenuItemService) { }
 
   ngOnInit(): void
@@ -22,9 +25,9 @@ export class MenuItemsComponent implements OnInit
     });
   }
 
-  onBtnDeleteClicked(txtText:string):void
+  onBtnDeleteClicked(menuitem:MenuItem):void
   {
-    alert('the mighty button has ben pressed ' + txtText);
+    this.menuItemService.deleteMenuItems(menuitem).subscribe();
   }
 
 }

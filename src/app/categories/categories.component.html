@@ -1,1 +1,16 @@
-<p>categories works!</p>
+<h1>Categories</h1>
+
+<div *ngFor="let category of categories">
+
+  <div>
+    Category Title: {{category.categorytitle}}
+  </div>
+  <div>
+    Category Id: {{category.categoryid}}
+  </div>
+  <div>
+    Category Description: {{category.categorydescription}}
+  </div>
+
+
+</div>

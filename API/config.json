@@ -2,8 +2,8 @@
     "database": {
         "user": "postgres",
         "host": "localhost",
-        "database": "webtech21jwt",
-        "password":"1234",
+        "database": "webtech21project",
+        "password":"Jagoda97",
         "port":"5432"
     },
 	"auth": {

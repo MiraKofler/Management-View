@@ -23,34 +23,64 @@ app.get("/", (req, res) =>
     res.status(200).send("API is running!");
 });
 
-app.get("/menuItem", (req, res) =>
-{
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json({name: 'Menu Item 1', id: 5});
 
-});
 
 app.get("/menuItems", (req, res) =>
 {
+
   res.setHeader('Content-Type', 'application/json');
-  let array = [];
-  array.push({name: 'Menu Item 1', id: 5});
-  array.push({name: 'Menu Item 2', id: 10});
-
-
-  res.status(200).send(array);
-
+  pool.query("select * from menuitem")
+    .then((data) =>
+    {
+      res.status(200).send(data.rows);
+    });
 });
 
-app.get("/menuCategories", (req, res) =>
+app.delete("/menuItems/menuitemid", (req, res) =>
 {
-    res.setHeader('Content-Type', 'application/json');
-    pool.query("select categoryId, title, description from menu_categories")
-        .then((data) =>
-        {
-            res.status(200).send(data.rows);
-        });
+  let id = req.menuitemid;
+  res.setHeader('Content-Type', 'application/json')
+  let sql = 'DELETE FROM menuitem WHERE menuitemid = ?'
+  pool.query(sql, id,(error, res, fields))
+    if(error)
+      return console.error(error.message);
+
+    console.log('Deleted Entry: ', res.rowsAffected)
 });
+
+app.get("/tables", (req, res) =>
+{
+
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("select * from tables")
+    .then((data) =>
+    {
+      res.status(200).send(data.rows);
+    });
+});
+
+app.get("/users", (req, res) =>
+{
+
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("select * from users")
+    .then((data) =>
+    {
+      res.status(200).send(data.rows);
+    });
+});
+
+app.get("/categories", (req, res) =>
+{
+
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("select * from category")
+    .then((data) =>
+    {
+      res.status(200).send(data.rows);
+    });
+});
+
 
 app.get("/menuCategories/:title", (req, res) =>
 {
@@ -61,6 +91,7 @@ app.get("/menuCategories/:title", (req, res) =>
         [req.params.title])
         .then((data) =>
         {
+
             res.status(200).send(data.rows[0]);
         });
 });

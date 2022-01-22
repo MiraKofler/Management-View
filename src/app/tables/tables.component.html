@@ -1,1 +1,15 @@
-<p>tables works!</p>
+<h1>Tables</h1>
+
+<div *ngFor="let table of tables">
+
+  <div>
+    Tables Id: {{table.tablesid}}
+  </div>
+  <div>
+    Tables Seatingcapacity: {{table.tablesseats}}
+  </div>
+  <div>
+    Tables Location Description: {{table.tableslocationdescription}}
+  </div>
+
+</div>
