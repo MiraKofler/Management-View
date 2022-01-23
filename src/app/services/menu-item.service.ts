@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {MenuItem} from "../models/menu-item.model";
 import {Tables} from "../models/tables.model";
+import {Categories} from "../models/categories.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,15 @@ export class MenuItemService {
 
   deleteMenuItems(menuitem: MenuItem): Observable<MenuItem>
   {
-    let id = menuitem.menuitemid
-    return this.http.delete<MenuItem>("http://localhost:3000/menuItems/"+id);
+    let menuitemid = menuitem.menuitemid;
+    return this.http.delete<MenuItem>("http://localhost:3000/menuItems/"+menuitemid);
   }
-
+  addMenuItems(menuitem: MenuItem): Observable<MenuItem>
+  {
+    return this.http.post<MenuItem>("http://localhost:3000/menuItems", menuitem);
+  }
+  updateMenuItems(menuitem: MenuItem): Observable<MenuItem>
+  {
+    return this.http.put<MenuItem>("http://localhost:3000/menuItems", menuitem);
+  }
 }

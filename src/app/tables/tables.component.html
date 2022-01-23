@@ -11,5 +11,14 @@
   <div>
     Tables Location Description: {{table.tableslocationdescription}}
   </div>
-
+  <button (click)="onBtnDeleteClicked(table)">Delete</button>
 </div>
+
+ID:<p><input type="number" id="id" name="id" #id></p>
+
+Seating capacity:<p><input type="number" id="seatingcapacity" name="seatingcapacity" #seatingcapacity></p>
+
+Location capacity:<p><input type="text" id="locationdescription" name="locationdescription" #locationdescription></p>
+
+<button (click)="onBtnAddClicked(id.valueAsNumber, seatingcapacity.valueAsNumber, locationdescription.value)">Add</button>
+<button (click)="onBtnUpdateClicked(id.valueAsNumber, seatingcapacity.valueAsNumber, locationdescription.value)">Update</button>

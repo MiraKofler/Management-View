@@ -3,10 +3,10 @@
 <div *ngFor="let menuItem of menuItems">
 
   <div>
-    Menu Item Name: {{menuItem.title}}
+    Menu Item Id: {{menuItem.menuitemid}}
   </div>
   <div>
-    Menu Item Id: {{menuItem.menuitemid}}
+    Menu Item Name: {{menuItem.title}}
   </div>
   <div>
     Menu Item Description: {{menuItem.itemdescription}}
@@ -18,5 +18,17 @@
   <button (click)="onBtnDeleteClicked(menuItem)">Delete</button>
 
 </div>
+
+ID:<p><input type="number" id="id" name="id" #id></p>
+
+Menu Item Name:<p><input type="text" id="name" name="name" #name></p>
+
+Menu Item Description:<p><input type="text" id="description" name="description" #description></p>
+
+Menu Item Price:<p><input type="number" id="price" name="price" #price></p>
+
+
+<button (click)="onBtnAddClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber)">Add</button>
+<button (click)="onBtnUpdateClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber)">Update</button>
 
 

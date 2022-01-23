@@ -36,17 +36,44 @@ app.get("/menuItems", (req, res) =>
     });
 });
 
-app.delete("/menuItems/menuitemid", (req, res) =>
+app.delete("/menuItems/:id", (req, res) =>
 {
-  let id = req.menuitemid;
-  res.setHeader('Content-Type', 'application/json')
-  let sql = 'DELETE FROM menuitem WHERE menuitemid = ?'
-  pool.query(sql, id,(error, res, fields))
-    if(error)
-      return console.error(error.message);
-
-    console.log('Deleted Entry: ', res.rowsAffected)
+  res.setHeader('Content-Type', 'application/json');
+  let sql = 'DELETE FROM menuitem men WHERE men.menuitemid = $1;'
+  pool.query(sql,[req.params.id])
+    .then((data) =>
+    {
+      res.status(200).send();
+      console.log('Deleted Entry: ', res.rowsAffected);
+    })
 });
+
+app.post("/menuItems", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("insert into menuitem(menuitemid, title, itemdescription,price)" +
+    "values($1, $2, $3, $4)",
+    [req.body.menuitemid, req.body.title, req.body.itemdescription, req.body.price]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+
+app.put("/menuItems", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("update menuitem set menuitemid = $1, title = $2, itemdescription = $3, price = $4 where menuitemid = $1",
+    [req.body.menuitemid, req.body.title, req.body.itemdescription, req.body.price]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+
+
 
 app.get("/tables", (req, res) =>
 {
@@ -59,6 +86,42 @@ app.get("/tables", (req, res) =>
     });
 });
 
+app.delete("/tables/:tablesid", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  let sql = 'DELETE FROM tables tab WHERE tab.tablesid = $1;'
+  pool.query(sql,[req.params.tablesid])
+    .then((data) =>
+    {
+      res.status(200).send();
+      console.log('Deleted Entry: ', res.rowsAffected);
+    })
+});
+
+app.post("/tables", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("insert into tables(tablesid, tablesseats, tableslocationdescription)" +
+    "values($1, $2, $3)",
+    [req.body.tablesid, req.body.tablesseats, req.body.tableslocationdescription]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+app.put("/tables", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("update tables set tablesid = $1, tablesseats = $2, tableslocationdescription = $3 where tablesid = $1",
+    [req.body.tablesid, req.body.tablesseats, req.body.tableslocationdescription]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+
 app.get("/users", (req, res) =>
 {
 
@@ -69,6 +132,46 @@ app.get("/users", (req, res) =>
       res.status(200).send(data.rows);
     });
 });
+
+app.delete("/users/:userid", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  let sql = 'DELETE FROM users use WHERE use.userid = $1;'
+  pool.query(sql,[req.params.userid])
+    .then((data) =>
+    {
+      res.status(200).send();
+      console.log('Deleted Entry: ', res.rowsAffected);
+    })
+});
+
+app.post("/users", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("insert into users(userid, username, password,  roletype)" +
+    "values($1, $2, $3, $4)",
+    [req.body.userid, req.body.username, req.body.password, req.body.roletype]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+
+app.put("/users", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("update users set userid = $1, username = $2, password = $3, roletype = $4 where userid = $1",
+    [req.body.userid, req.body.username, req.body.password, req.body.roletype ]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+
+
+
 
 app.get("/categories", (req, res) =>
 {
@@ -81,6 +184,41 @@ app.get("/categories", (req, res) =>
     });
 });
 
+app.delete("/categories/:categoryid", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  let sql = 'DELETE FROM category cat WHERE cat.categoryid = $1;'
+  pool.query(sql,[req.params.categoryid])
+    .then((data) =>
+    {
+      res.status(200).send();
+      console.log('Deleted Entry: ', res.rowsAffected);
+    })
+});
+
+
+app.post("/categories", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("insert into category(categoryid, categorytitle, categorydescription) " +
+    "values($1, $2, $3)",
+    [req.body.categoryid, req.body.categorytitle, req.body.categorydescription]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
+
+app.put("/categories", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("update category set categoryid = $1, categorytitle = $2, categorydescription = $3 where categoryid = $1",
+    [req.body.categoryid, req.body.categorytitle, req.body.categorydescription]).
+  then((data) =>
+  {
+    res.status(200).send();
+  });
+});
 
 app.get("/menuCategories/:title", (req, res) =>
 {

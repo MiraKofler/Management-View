@@ -3,14 +3,23 @@
 <div *ngFor="let category of categories">
 
   <div>
-    Category Title: {{category.categorytitle}}
+    Category Id: {{category.categoryid}}
   </div>
   <div>
-    Category Id: {{category.categoryid}}
+    Category Title: {{category.categorytitle}}
   </div>
   <div>
     Category Description: {{category.categorydescription}}
   </div>
-
+  <button (click)="onBtnDeleteClicked(category)">Delete</button>
 
 </div>
+
+ID:<p><input type="number" id="id" name="id" #id></p>
+
+Title:<p><input type="text" id="title" name="title" #title></p>
+
+Description:<p><input type="text" id="description" name="description" #description></p>
+
+<button (click)="onBtnAddClicked(id.valueAsNumber, title.value, description.value)">Add</button>
+<button (click)="onBtnUpdateClicked(id.valueAsNumber, title.value, description.value)">Update</button>

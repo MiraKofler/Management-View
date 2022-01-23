@@ -15,5 +15,16 @@
     User Roletype: {{user.roletype}}
   </div>
 
-
+  <button (click)="onBtnDeleteClicked(user)">Delete</button>
 </div>
+
+ID:<p><input type="number" id="id" name="id" #id></p>
+
+Name:<p><input type="text" id="name" name="name" #name></p>
+
+Password:<p><input type="text" id="password" name="password" #passsword></p>
+
+Roletype:<p><input type="number" id="roletype" name="roletype" #roletype></p>
+
+<button (click)="onBtnAddClicked(id.valueAsNumber, name.value, passsword.value, roletype.value)">Add</button>
+<button (click)="onBtnUpdateClicked(id.valueAsNumber, name.value, passsword.value, roletype.value)">Update</button>
