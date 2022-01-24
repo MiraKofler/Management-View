@@ -1,30 +1,26 @@
 <h1>Users</h1>
 
 <div *ngFor="let user of users">
+  <br>
+  <h4>User Id: <h5>{{user.userid}}</h5></h4>
 
-  <div>
-    User Id: {{user.userid}}
-  </div>
-  <div>
-    User Name: {{user.username}}
-  </div>
-  <div>
-    User Password: {{user.password}}
-  </div>
-  <div>
-    User Roletype: {{user.roletype}}
-  </div>
+  <h6>User Name: <h5>{{user.username}}</h5> </h6>
+
+  <h2> User Password: <h5>{{user.password}}</h5> </h2>
+
+  <h3>User Roletype: <h5>{{user.roletype}}</h5></h3>
 
   <button (click)="onBtnDeleteClicked(user)">Delete</button>
+  <br>
 </div>
 
-ID:<p><input type="number" id="id" name="id" #id></p>
+<p>ID:<input type="number" id="id" name="id" #id></p>
 
-Name:<p><input type="text" id="name" name="name" #name></p>
+<p>Name:<input type="text" id="name" name="name" #name></p>
 
-Password:<p><input type="text" id="password" name="password" #passsword></p>
+<p>Password:<input type="text" id="password" name="password" #passsword></p>
 
-Roletype:<p><input type="number" id="roletype" name="roletype" #roletype></p>
+<p>Roletype:<input type="number" id="roletype" name="roletype" #roletype></p>
 
 <button (click)="onBtnAddClicked(id.valueAsNumber, name.value, passsword.value, roletype.value)">Add</button>
 <button (click)="onBtnUpdateClicked(id.valueAsNumber, name.value, passsword.value, roletype.value)">Update</button>

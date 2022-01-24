@@ -1,24 +1,22 @@
 <h1>Tables</h1>
 
 <div *ngFor="let table of tables">
+  <br>
+  <h4>Tables Id: <h5>{{table.tablesid}}</h5></h4>
 
-  <div>
-    Tables Id: {{table.tablesid}}
-  </div>
-  <div>
-    Tables Seatingcapacity: {{table.tablesseats}}
-  </div>
-  <div>
-    Tables Location Description: {{table.tableslocationdescription}}
-  </div>
+  <h6>Tables Seatingcapacity: <h5>{{table.tablesseats}}</h5> </h6>
+
+  <h2> Tables Location Description: <h5>{{table.tableslocationdescription}}</h5> </h2>
+
   <button (click)="onBtnDeleteClicked(table)">Delete</button>
+  <br>
 </div>
 
-ID:<p><input type="number" id="id" name="id" #id></p>
+<p>ID:<input type="number" id="id" name="id" #id></p>
 
-Seating capacity:<p><input type="number" id="seatingcapacity" name="seatingcapacity" #seatingcapacity></p>
+<p>Seating capacity:<input type="number" id="seatingcapacity" name="seatingcapacity" #seatingcapacity></p>
 
-Location capacity:<p><input type="text" id="locationdescription" name="locationdescription" #locationdescription></p>
+<p>Location capacity:<input type="text" id="locationdescription" name="locationdescription" #locationdescription></p>
 
 <button (click)="onBtnAddClicked(id.valueAsNumber, seatingcapacity.valueAsNumber, locationdescription.value)">Add</button>
 <button (click)="onBtnUpdateClicked(id.valueAsNumber, seatingcapacity.valueAsNumber, locationdescription.value)">Update</button>

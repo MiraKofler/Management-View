@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --main-blue: #303a40;
+  background-color: #333;
+
+}
+
+h1{
+  color: #04AA6D;
+}
+
+button{
+  box-shadow: 2px 2px 4px 1px rgba(20,20,20,0.4);
+  color: var(--main-blue);
+  background-color: #8df5d1;
+  border: white;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: large;
+  alignment: right;
+  margin: auto;
+  display: grid
+
+}
+
+h5{
+  display: inline;
+  font-weight: normal;
+  font-size: large;
+  color: #afb8b1;
+  text-align: center;
+}
+
+h4{
+  padding-top: 40px;
+  display: inline;
+  font-weight: bold;
+  text-decoration: underline;
+  padding-left: 10px;
+  color: #dddddd;
+}
+
+h2,h3,h6{
+  font-size: large;
+  font-weight: bold;
+  text-decoration: underline;
+  padding-left: 10px;
+  color: #dddddd;
+}
+
+div {
+  border: 1px solid #b4afaf;
+}
+
+p{
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+  text-justify: inter-word;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

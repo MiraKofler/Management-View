@@ -1,31 +1,25 @@
-<h1>Menu Items</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Menu Items</h1>
 
 <div *ngFor="let menuItem of menuItems">
+  <br>
+  <h4> Menu Item Id: <h5>{{menuItem.menuitemid}} </h5></h4>
 
-  <div>
-    Menu Item Id: {{menuItem.menuitemid}}
-  </div>
-  <div>
-    Menu Item Name: {{menuItem.title}}
-  </div>
-  <div>
-    Menu Item Description: {{menuItem.itemdescription}}
-  </div>
-  <div>
-    Menu Item Price: {{menuItem.price}}
-  </div>
+  <h6> Menu Item Name: <h5>{{menuItem.title}}</h5> </h6>
 
+  <h2> Menu Item Description: <h5>{{menuItem.itemdescription}}</h5> </h2>
+
+  <h3>Menu Item Price: <h5>{{menuItem.price}}</h5></h3>
   <button (click)="onBtnDeleteClicked(menuItem)">Delete</button>
-
+  <br>
 </div>
 
-ID:<p><input type="number" id="id" name="id" #id></p>
+<p>ID: <input type="number" id="id" name="id" #id></p>
 
-Menu Item Name:<p><input type="text" id="name" name="name" #name></p>
+<p>Menu Item Name: <input type="text" id="name" name="name" #name></p>
 
-Menu Item Description:<p><input type="text" id="description" name="description" #description></p>
+<p>Menu Item Description: <input type="text" id="description" name="description" #description></p>
 
-Menu Item Price:<p><input type="number" id="price" name="price" #price></p>
+<p>Menu Item Price: <input type="number" id="price" name="price" #price></p>
 
 
 <button (click)="onBtnAddClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber)">Add</button>

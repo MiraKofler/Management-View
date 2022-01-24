@@ -1,25 +1,22 @@
 <h1>Categories</h1>
 
 <div *ngFor="let category of categories">
+  <br>
+  <h4> Category Id: <h5>{{category.categoryid}}</h5></h4>
 
-  <div>
-    Category Id: {{category.categoryid}}
-  </div>
-  <div>
-    Category Title: {{category.categorytitle}}
-  </div>
-  <div>
-    Category Description: {{category.categorydescription}}
-  </div>
+  <h6>Category Title: <h5>{{category.categorytitle}}</h5> </h6>
+
+  <h2> Category Description: <h5>{{category.categorydescription}}</h5> </h2>
+
   <button (click)="onBtnDeleteClicked(category)">Delete</button>
-
+  <br>
 </div>
 
-ID:<p><input type="number" id="id" name="id" #id></p>
+<p>ID:<input type="number" id="id" name="id" #id></p>
 
-Title:<p><input type="text" id="title" name="title" #title></p>
+<p>Title:<input type="text" id="title" name="title" #title></p>
 
-Description:<p><input type="text" id="description" name="description" #description></p>
+<p>Description:<input type="text" id="description" name="description" #description></p>
 
 <button (click)="onBtnAddClicked(id.valueAsNumber, title.value, description.value)">Add</button>
 <button (click)="onBtnUpdateClicked(id.valueAsNumber, title.value, description.value)">Update</button>
