@@ -1,0 +1,28 @@
+.container {
+  text-align: center;
+}
+.div{
+  text-align: center;
+}
+
+QRCode.input{
+  width: 200px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+ngx-qrcode.container{
+  filter: drop-shadow(3px 3px 3px #999);
+}
+
+QRCode img {
+  width: 250px;
+}
+
+
+
+
+
+
+
+

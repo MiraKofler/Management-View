@@ -12,6 +12,8 @@ import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
+import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxQRCodeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

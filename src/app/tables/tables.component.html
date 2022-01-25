@@ -10,6 +10,17 @@
 
   <button (click)="onBtnDeleteClicked(table)">Delete</button>
   <br>
+  <div class="container">
+      <ngx-qrcode class="QRCode"
+              [elementType]="elementType"
+              [errorCorrectionLevel]="correctionLevel"
+              [value]=getqrinfo(table)
+      ></ngx-qrcode>
+  </div>
+  <br>
+  <button (click)="onBtnQRCodeClicked(table)">Print QR-Code</button>
+
+  <br>
 </div>
 
 <p>ID:<input type="number" id="id" name="id" #id></p>

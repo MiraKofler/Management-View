@@ -3,15 +3,32 @@ import {Tables} from "../models/tables.model";
 import {TablesService} from "../services/tables.service";
 import {MenuItem} from "../models/menu-item.model";
 import {Categories} from "../models/categories.model";
+import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css']
 })
+
+
 export class TablesComponent implements OnInit {
 
+
+
+
   tables:Tables[] = [];
+  item = [{
+    'link': 'https://www.techiediaries.com/',
+    'Table Number': 1,
+    'Seating Capacity': 5,
+    'Description': 'Back'
+  }]
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  qrInfo = JSON.stringify(this.item);
+
+
   constructor(private tablesService:TablesService) { }
 
   ngOnInit(): void {
@@ -104,5 +121,33 @@ export class TablesComponent implements OnInit {
     {
       console.log(ex);
     }
+  }
+  getqrinfo(table: Tables){
+    this.item = [{
+      'link': 'https://www.techiediaries.com/',
+      'Table Number': table.tablesid,
+      'Seating Capacity': table.tablesseats,
+      'Description': table.tableslocationdescription
+    }]
+    this.qrInfo = JSON.stringify(this.item);
+    return this.qrInfo;
+  }
+
+  onBtnQRCodeClicked(table: Tables) {
+
+    const fileNameToDownload = 'table '+table.tablesid+'_qrcode';
+    const base64Img = document.getElementsByTagName('img')[0].src;
+    fetch(base64Img)
+      .then(res => res.blob())
+      .then((blob) => {
+          // Chrome
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = fileNameToDownload;
+          link.click();
+
+      })
+
   }
 }
