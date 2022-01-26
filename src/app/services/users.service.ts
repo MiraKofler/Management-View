@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Users} from "../models/users.model";
-import {Categories} from "../models/categories.model";
 
 
 @Injectable({

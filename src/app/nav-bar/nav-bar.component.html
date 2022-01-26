@@ -1,5 +1,5 @@
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
+<div class="topnav" *ngIf="authenticationService.isAuthenticated">
+  <a class="active" href="#home">Logout</a>
   <a routerLink="/tables">Tables</a>
   <a routerLink="/categories">Categories</a>
   <a routerLink="/item">Menu-Items</a>

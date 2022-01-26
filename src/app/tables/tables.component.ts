@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Tables} from "../models/tables.model";
 import {TablesService} from "../services/tables.service";
-import {MenuItem} from "../models/menu-item.model";
-import {Categories} from "../models/categories.model";
 import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
 
 @Component({
@@ -13,9 +11,6 @@ import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediar
 
 
 export class TablesComponent implements OnInit {
-
-
-
 
   tables:Tables[] = [];
   item = [{

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TablesComponent } from './tables/tables.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -13,26 +12,28 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule} from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
+import {LoginComponent} from "./login/login.component";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavBarComponent,
     TablesComponent,
     CategoriesComponent,
     MenuItemsComponent,
     UsersComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    NgxQRCodeModule
-
+    NgxQRCodeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

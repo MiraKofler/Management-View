@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {MenuItem} from "../models/menu-item.model";
-import {Tables} from "../models/tables.model";
-import {Categories} from "../models/categories.model";
 
 @Injectable({
   providedIn: 'root'

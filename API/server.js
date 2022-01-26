@@ -36,6 +36,18 @@ app.get("/menuItems", (req, res) =>
     });
 });
 
+
+app.get("/login", (req, res) =>
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("select * from users u where u.roletype = '1'")
+    .then((data) =>
+    {
+      res.status(200).send(data.rows);
+    });
+});
+
+
 app.delete("/menuItems/:id", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
