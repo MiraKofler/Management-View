@@ -1,7 +1,8 @@
-<div class="topnav" *ngIf="authenticationService.isAuthenticated">
-  <a class="active" href="#home">Logout</a>
+<div class="topnav" *ngIf="this.cookieService.check('AuthCookie')">
+
   <a routerLink="/tables">Tables</a>
   <a routerLink="/categories">Categories</a>
   <a routerLink="/item">Menu-Items</a>
   <a routerLink="/users">Users</a>
+  <button (click)="onBtnLogoutClicked()">Logout</button>
 </div>

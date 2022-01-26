@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Tables} from "../models/tables.model";
 import {TablesService} from "../services/tables.service";
 import {NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels} from "@techiediaries/ngx-qrcode";
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-tables',
@@ -31,6 +32,7 @@ export class TablesComponent implements OnInit {
       tables.sort((a,b) => a.tablesid - b.tablesid);
       this.tables = tables;
     });
+
   }
   onBtnDeleteClicked(table:Tables):void
   {

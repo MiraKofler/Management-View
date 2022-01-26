@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
 import {LoginComponent} from "./login/login.component";
 import {FormsModule} from "@angular/forms";
+import {CookieService} from "ngx-cookie-service";
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import {FormsModule} from "@angular/forms";
     NgxQRCodeModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

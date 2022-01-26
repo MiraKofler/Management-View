@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {AuthenticationService} from "../services/authentication.service";
+import {CookieService} from "ngx-cookie-service";
 
 
 @Component({
@@ -13,7 +14,10 @@ export class LoginComponent implements OnInit {
   isFormValid = false;
   areCredentialsInvalid = false;
 
-  constructor(private authenticationService:AuthenticationService) { }
+
+  constructor(private authenticationService:AuthenticationService, private cookieService:CookieService) {
+
+  }
 
   ngOnInit(): void {
     this.authenticationService.getLogin();

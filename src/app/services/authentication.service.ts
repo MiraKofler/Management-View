@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Users} from "../models/users.model";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,18 @@ export class AuthenticationService {
 
   signInData = ["user", "password"]
   isAuthenticated = false;
+  cookieValue = "";
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient, private route: Router, private cookieService:CookieService) {
+  }
 
   authenticate(username: string, password: string): boolean {
 
     this.signInData[0] = username;
     this.signInData[1] = password;
     if (this.checkCredentials(this.signInData)) {
+      this.cookieService.set('AuthCookie', 'true',{expires: 2, sameSite: "Lax"});
+      this.cookieValue = this.cookieService.get('Test');
       this.isAuthenticated = true;
       this.route.navigate(['tables']);
       return true;
@@ -63,7 +68,5 @@ export class AuthenticationService {
     this.route.navigate(['login']);
   }
 
-  getIsAuthenticated(): boolean {
-    return this.isAuthenticated;
-  }
+
 }
