@@ -15,7 +15,7 @@ export class TablesComponent implements OnInit {
 
   tables:Tables[] = [];
   item = [{
-    'link': 'https://www.techiediaries.com/',
+    'link': 'http://localhost:4200/login/14',
     'Table Number': 1,
     'Seating Capacity': 5,
     'Description': 'Back'
@@ -121,7 +121,7 @@ export class TablesComponent implements OnInit {
   }
   getqrinfo(table: Tables){
     this.item = [{
-      'link': 'https://www.techiediaries.com/',
+      'link': 'http://localhost:4200/login/14',
       'Table Number': table.tablesid,
       'Seating Capacity': table.tablesseats,
       'Description': table.tableslocationdescription
