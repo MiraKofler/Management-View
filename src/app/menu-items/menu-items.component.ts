@@ -33,9 +33,9 @@ export class MenuItemsComponent implements OnInit
 
   }
 
-  onBtnAddClicked(id: number, name: string, description: string, price: number) {
-    if(id == null || name == "" || description == "" || price == null){
-      alert("All fields must not be empty");
+  onBtnAddClicked(id: number, name: string, description: string, price: number, allergenes: string, category: string) {
+    if(id == null || name == "" || description == "" || price == null || category == ""){
+      alert("All fields besides allergenes must not be empty");
       return;
     }
     let menuitem: MenuItem = new MenuItem();
@@ -68,6 +68,8 @@ export class MenuItemsComponent implements OnInit
       menuitem.title = name;
       menuitem.itemdescription = description;
       menuitem.price = price;
+      menuitem.menuallergenes = allergenes;
+      menuitem.menucategory = category;
 
       this.menuItemService.addMenuItems(menuitem).subscribe(() => window.location.reload());
     }
@@ -77,9 +79,9 @@ export class MenuItemsComponent implements OnInit
     }
   }
 
-  onBtnUpdateClicked(id: number, name: string, description: string, price: number) {
-    if(id == null || name == "" || description == "" || price == null){
-      alert("All fields must not be empty");
+  onBtnUpdateClicked(id: number, name: string, description: string, price: number, allergenes: string, category: string) {
+    if(id == null || name == "" || description == "" || price == null || category == ""){
+      alert("All fields besides allergenes must not be empty");
       return;
     }
     let menuitem: MenuItem = new MenuItem();
@@ -101,6 +103,8 @@ export class MenuItemsComponent implements OnInit
             menuitem.title = name;
             menuitem.itemdescription = description;
             menuitem.price = price;
+            menuitem.menuallergenes = allergenes;
+            menuitem.menucategory = category;
 
             this.menuItemService.updateMenuItems(menuitem).subscribe(() => window.location.reload());
           } else {

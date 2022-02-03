@@ -3,4 +3,6 @@ export class MenuItem {
   title:string = "";
   itemdescription:string = "";
   price:number = 0.0;
+  menuallergenes:string = "";
+  menucategory:string = "";
 }

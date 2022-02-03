@@ -9,6 +9,11 @@
   <h2> Menu Item Description: <h5>{{menuItem.itemdescription}}</h5> </h2>
 
   <h3>Menu Item Price: <h5>{{menuItem.price}}</h5></h3>
+
+  <h3>Menu Item Allergens: <h5>{{menuItem.menuallergenes}}</h5></h3>
+
+  <h3>Menu Item Category: <h5>{{menuItem.menucategory}}</h5></h3>
+
   <button (click)="onBtnDeleteClicked(menuItem)">Delete</button>
   <br>
 </div>
@@ -21,8 +26,12 @@
 
 <p>Menu Item Price: <input type="number" id="price" name="price" #price></p>
 
+<p>Menu Item Allergens: <input type="text" id="allergenes" name="allergenes" #allergenes></p>
 
-<button (click)="onBtnAddClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber)">Add</button>
-<button (click)="onBtnUpdateClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber)">Update</button>
+<p>Menu Item Category: <input type="text" id="category" name="category" #category></p>
+
+
+<button (click)="onBtnAddClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber, allergenes.value, category.value)">Add</button>
+<button (click)="onBtnUpdateClicked(id.valueAsNumber, name.value , description.value, price.valueAsNumber, allergenes.value, category.value)">Update</button>
 
 

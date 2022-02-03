@@ -63,9 +63,9 @@ app.delete("/menuItems/:id", (req, res) =>
 app.post("/menuItems", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
-  pool.query("insert into menuitem(menuitemid, title, itemdescription,price)" +
-    "values($1, $2, $3, $4)",
-    [req.body.menuitemid, req.body.title, req.body.itemdescription, req.body.price]).
+  pool.query("insert into menuitem(menuitemid, title, itemdescription,price, menuallergenes, menucategory)" +
+    "values($1, $2, $3, $4, $5, $6)",
+    [req.body.menuitemid, req.body.title, req.body.itemdescription, req.body.price, req.body.menuallergenes, req.body.menucategory]).
   then((data) =>
   {
     res.status(200).send();
@@ -76,8 +76,8 @@ app.post("/menuItems", (req, res) =>
 app.put("/menuItems", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
-  pool.query("update menuitem set menuitemid = $1, title = $2, itemdescription = $3, price = $4 where menuitemid = $1",
-    [req.body.menuitemid, req.body.title, req.body.itemdescription, req.body.price]).
+  pool.query("update menuitem set menuitemid = $1, title = $2, itemdescription = $3, price = $4, menuallergenes = $5, menucategory = $6 where menuitemid = $1",
+    [req.body.menuitemid, req.body.title, req.body.itemdescription, req.body.price, req.body.menuallergenes, req.body.menucategory]).
   then((data) =>
   {
     res.status(200).send();
