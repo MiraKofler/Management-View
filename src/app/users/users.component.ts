@@ -12,6 +12,7 @@ import {Categories} from "../models/categories.model";
 export class UsersComponent implements OnInit {
 
   users:Users[] = [];
+  i = 0;
 
   constructor(private usersService:UsersService) { }
 
@@ -85,20 +86,20 @@ export class UsersComponent implements OnInit {
       }
 
       if(roletype === "1" || roletype === "2" || roletype === "3"){
-        if(id <= this.users.length) {
-          if (id == this.users[id - 1].userid) {
+        for(this.i = 0; this.i < this.users.length; this.i++) {
+          if (id == this.users[this.i].userid) {
             user.userid = id;
             user.username = name;
             user.password = password;
             user.roletype = roletype;
 
             this.usersService.updateUsers(user).subscribe(() => window.location.reload());
-          } else {
-            alert("the object you want to update does not exist!")
             return;
           }
-        }else {
-          alert("the object you want to update does not exist!")
+        }
+        if(this.i == this.users.length){
+          alert("The user you want to update is not defined!")
+          this.i = 0;
           return;
         }
 

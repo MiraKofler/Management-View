@@ -13,6 +13,7 @@ export class MenuItemsComponent implements OnInit
 {
 
   menuItems:MenuItem[] = [];
+  i = 0;
 
 
 
@@ -97,8 +98,8 @@ export class MenuItemsComponent implements OnInit
         return;
       }
 
-        if(id <= this.menuItems.length) {
-          if (id == this.menuItems[id - 1].menuitemid) {
+        for(this.i = 0; this.i < this.menuItems.length; this.i++){
+          if (id == this.menuItems[this.i].menuitemid) {
             menuitem.menuitemid = id;
             menuitem.title = name;
             menuitem.itemdescription = description;
@@ -106,15 +107,18 @@ export class MenuItemsComponent implements OnInit
             menuitem.menuallergenes = allergenes;
             menuitem.menucategory = category;
 
+
             this.menuItemService.updateMenuItems(menuitem).subscribe(() => window.location.reload());
-          } else {
-            alert("the object you want to update does not exist!")
             return;
           }
-        }else {
-          alert("the object you want to update does not exist!")
-          return;
         }
+
+
+        if(this.i == this.menuItems.length){
+          alert("The object you want to update is not defined!")
+          this.i = 0;
+          return;
+      }
     }
     catch (ex)
     {

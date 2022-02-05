@@ -12,6 +12,7 @@ import {Tables} from "../models/tables.model";
 export class CategoriesComponent implements OnInit {
 
   categories: Categories[] = [];
+  i = 0;
 
   constructor(private categoriesService: CategoriesService) {
   }
@@ -71,21 +72,21 @@ export class CategoriesComponent implements OnInit {
         return;
       }
 
-        if (id <= this.categories.length) {
-          if (id == this.categories[id - 1].categoryid) {
+        for(this.i = 0; this.i< this.categories.length; this.i ++) {
+          if (id == this.categories[this.i].categoryid) {
             category.categoryid = id;
             category.categorytitle = title;
             category.categorydescription = description;
 
             this.categoriesService.updateCategories(category).subscribe(() => window.location.reload());
-          } else {
-            alert("the object you want to update does not exist!")
             return;
           }
-        }else {
-          alert("the object you want to update does not exist!")
-          return;
         }
+      if(this.i == this.categories.length){
+        alert("The object you want to update is not defined!")
+        this.i = 0;
+        return;
+      }
 
     } catch (ex) {
       console.log(ex);

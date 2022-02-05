@@ -16,7 +16,9 @@ export class AuthenticationService {
   isAuthenticated = false;
   cookieValue = "";
 
+
   constructor(private http: HttpClient, private route: Router, private cookieService:CookieService) {
+
   }
 
   authenticate(username: string, password: string): boolean {

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cookieService.deleteAll();
     this.authenticationService.getLogin();
     this.authenticationService.setUser();
   }

@@ -23,6 +23,7 @@ export class TablesComponent implements OnInit {
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   qrInfo = JSON.stringify(this.item);
+  i = 0;
 
 
   constructor(private tablesService:TablesService) { }
@@ -94,8 +95,8 @@ export class TablesComponent implements OnInit {
         alert("seatingcapacity must be greater 0 and less than 15!");
         return;
       }
-      if(id <= this.tables.length) {
-        if (id == this.tables[id - 1].tablesid) {
+      for(this.i = 0; this.i < this.tables.length; this.i ++) {
+        if (id == this.tables[this.i].tablesid) {
           table.tablesid = id;
           table.tablesseats = seatingcapacity;
           table.tableslocationdescription = locationdescription;
@@ -103,15 +104,13 @@ export class TablesComponent implements OnInit {
           this.tablesService.updateTables(table).subscribe(() => window.location.reload());
           return;
         }
-        else{
-          alert("the object you want to update does not exist!")
-          return;
-        }
-      }else{
-        alert("the object you want to update does not exist!")
+
+      }
+      if(this.i == this.tables.length){
+        alert("The object you want to update is not defined!")
+        this.i = 0;
         return;
       }
-
 
     }
     catch (ex)
