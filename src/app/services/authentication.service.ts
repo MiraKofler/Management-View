@@ -8,6 +8,9 @@ import {CookieService} from "ngx-cookie-service";
 @Injectable({
   providedIn: 'root'
 })
+/*
+Setting our user data array, sign in data and authentication variable
+ */
 export class AuthenticationService {
 
   user: Users[] = [];
@@ -20,7 +23,10 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private route: Router, private cookieService:CookieService) {
 
   }
-
+/*
+Compare login data with database credentials. If the data is correct, a session cookie is created
+and the user gets to the nav bar.
+ */
   authenticate(username: string, password: string): boolean {
 
     this.signInData[0] = username;
@@ -35,11 +41,15 @@ export class AuthenticationService {
     this.isAuthenticated = false;
     return false;
   }
-
+/*
+Get the login data from the database
+ */
   getLogin(): Observable<Users[]>{
     return this.http.get<Users[]>("http://localhost:3000/login");
   }
-
+/*
+checking credentials
+ */
   private checkCredentials(signInData: string[]): boolean {
 
       if (this.checkLogin(signInData[0]) && this.checkPassword(signInData[1])) {
@@ -49,11 +59,16 @@ export class AuthenticationService {
       }
 
   }
-
+/*
+check username
+ */
   private checkLogin(login: string): boolean {
 
     return login == this.user[0].username;
   }
+  /*
+  Setting data from data base, so we can use it to compare it with the user input
+   */
   setUser(){
     this.isAuthenticated = false;
     this.getLogin().subscribe((users: Users[]) => {
@@ -61,10 +76,15 @@ export class AuthenticationService {
       return this.user;
     });
   }
+  /*
+  check password
+   */
   private checkPassword(password: string): boolean {
     return password == this.user[0].password;
   }
-
+/*
+setting authentication variable to false and navigate back to login screen
+ */
   logout() {
     this.isAuthenticated = false;
     this.route.navigate(['login']);

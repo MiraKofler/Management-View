@@ -7,7 +7,9 @@ import {Users} from "../models/users.model";
 @Injectable({
   providedIn: 'root'
 })
-
+/*
+Get, delete, add and update http requests for our api
+ */
 export class UsersService {
 
   constructor(private http: HttpClient) { }

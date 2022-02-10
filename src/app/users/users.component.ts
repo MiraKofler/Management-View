@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Users} from "../models/users.model";
 import {UsersService} from "../services/users.service";
-import {MenuItem} from "../models/menu-item.model";
-import {Categories} from "../models/categories.model";
+
 
 @Component({
   selector: 'app-users',
@@ -11,12 +10,17 @@ import {Categories} from "../models/categories.model";
 })
 export class UsersComponent implements OnInit {
 
+  /*
+   On init we set our menuitem requirements to 0
+*/
   users:Users[] = [];
   i = 0;
 
   constructor(private usersService:UsersService) { }
 
-
+  /*
+     We sort our array and make it a Element
+   */
   ngOnInit(): void {
     this.usersService.getUsers().subscribe((users:Users[]) => {
 
@@ -24,6 +28,10 @@ export class UsersComponent implements OnInit {
       this.users = users;
     });
   }
+
+  /*
+  Deleting selected user
+   */
   onBtnDeleteClicked(user:Users):void
   {
     this.users = this.users.filter(u => u != user);
@@ -31,7 +39,11 @@ export class UsersComponent implements OnInit {
 
   }
 
+  /*
+  Adding user with given values from the input fields
+   */
   onBtnAddClicked(id: number, name: string, password: string, roletype: string) {
+    //Checking if each field contains a value
     if(id == null || name == "" || password == "" || roletype == null){
       alert("All fields must not be empty");
       return;
@@ -45,6 +57,7 @@ export class UsersComponent implements OnInit {
         return;
       }
 
+      //Roletype must be either 1, 2 or 3 - standing for waiter, kitchen, manager
       if(roletype === "1" || roletype === "2" || roletype === "3" ){
         for(let i = 0; i < this.users.length; i++) {
           if (id == this.users[i].userid) {
@@ -71,7 +84,11 @@ export class UsersComponent implements OnInit {
     }
   }
 
+  /*
+  Updating users with given values from the input fields
+   */
   onBtnUpdateClicked(id: number, name: string, password: string, roletype: string) {
+    //Checking if each field contains a value
     if(id == null || name == "" || password == "" || roletype == null){
       alert("All fields must not be empty");
       return;
@@ -85,6 +102,7 @@ export class UsersComponent implements OnInit {
         return;
       }
 
+      //Searching for the right user with the same id
       if(roletype === "1" || roletype === "2" || roletype === "3"){
         for(this.i = 0; this.i < this.users.length; this.i++) {
           if (id == this.users[this.i].userid) {

@@ -16,7 +16,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  /*
+  On logout the session cookie gets deleted and the authentication variables are set to false.
+   */
   onBtnLogoutClicked() {
     this.cookieService.deleteAll();
     this.authenticationService.logout();

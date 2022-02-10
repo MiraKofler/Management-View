@@ -7,6 +7,9 @@ import {CategoriesComponent} from "./categories/categories.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./guard/auth.guard";
 
+/*
+Routes for each individual path. Except for the login component, the other ones are locked and hidden by authguard.
+ */
 const routes: Routes = [
   {path:'', redirectTo: 'login', pathMatch:'full'},
   { path: 'login', component: LoginComponent },

@@ -6,6 +6,9 @@ import {MenuItem} from "../models/menu-item.model";
 @Injectable({
   providedIn: 'root'
 })
+/*
+get, delete, add and update http requests for our api
+ */
 export class MenuItemService {
 
   constructor(private http: HttpClient) { }

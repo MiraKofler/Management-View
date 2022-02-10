@@ -6,7 +6,9 @@ import {Categories} from "../models/categories.model";
 @Injectable({
   providedIn: 'root'
 })
-
+/*
+get, delete, add and update http requests for our api
+ */
 export class CategoriesService {
 
   constructor(private http: HttpClient) { }

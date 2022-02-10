@@ -3,7 +3,10 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTre
 import { Observable } from 'rxjs';
 import {CookieService} from "ngx-cookie-service";
 
-
+/*
+Authguard is used to block certain parts of the web app, when a user isn't logged in.
+We use our authcookie (which is our session cookie, if some is logged in) to activate the hidden parts of the web app.
+ */
 @Injectable({
   providedIn: 'root'
 })

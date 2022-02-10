@@ -15,7 +15,9 @@ import {NgxQRCodeModule} from '@techiediaries/ngx-qrcode';
 import {LoginComponent} from "./login/login.component";
 import {FormsModule} from "@angular/forms";
 import {CookieService} from "ngx-cookie-service";
-
+/*
+Every needed module
+ */
 
 @NgModule({
   declarations: [

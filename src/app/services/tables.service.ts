@@ -7,7 +7,9 @@ import {Tables} from "../models/tables.model";
 @Injectable({
   providedIn: 'root'
 })
-
+/*
+get, delete, update and add http requests for our api
+ */
 export class TablesService {
 
   constructor(private http: HttpClient){ }

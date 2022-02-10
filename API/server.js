@@ -17,6 +17,10 @@ const loginRoutes = require('./login');
 const { table } = require('console');
 app.use("/payOrder", loginRoutes);
 
+/*
+Every needed and defined api request.
+ */
+
 app.get("/", (req, res) =>
 {
     res.setHeader('Content-Type', 'text/html');
@@ -24,8 +28,21 @@ app.get("/", (req, res) =>
 });
 
 
+app.get("/login", (req, res) => //Login request
+{
+  res.setHeader('Content-Type', 'application/json');
+  pool.query("select * from users u where u.roletype = '1'")
+    .then((data) =>
+    {
+      res.status(200).send(data.rows);
+    });
+});
 
-app.get("/menuItems", (req, res) =>
+/**
+ * MenuItem
+ * */
+
+app.get("/menuItems", (req, res) => // Get all menu-items
 {
 
   res.setHeader('Content-Type', 'application/json');
@@ -36,19 +53,7 @@ app.get("/menuItems", (req, res) =>
     });
 });
 
-
-app.get("/login", (req, res) =>
-{
-  res.setHeader('Content-Type', 'application/json');
-  pool.query("select * from users u where u.roletype = '1'")
-    .then((data) =>
-    {
-      res.status(200).send(data.rows);
-    });
-});
-
-
-app.delete("/menuItems/:id", (req, res) =>
+app.delete("/menuItems/:id", (req, res) => //Deletes the MenuItem with the given id
 {
   res.setHeader('Content-Type', 'application/json');
   let sql = 'DELETE FROM menuitem men WHERE men.menuitemid = $1;'
@@ -60,7 +65,7 @@ app.delete("/menuItems/:id", (req, res) =>
     })
 });
 
-app.post("/menuItems", (req, res) =>
+app.post("/menuItems", (req, res) => //Inserts new item into MenuItem
 {
   res.setHeader('Content-Type', 'application/json');
   pool.query("insert into menuitem(menuitemid, title, itemdescription,price, menuallergenes, menucategory)" +
@@ -73,7 +78,7 @@ app.post("/menuItems", (req, res) =>
 });
 
 
-app.put("/menuItems", (req, res) =>
+app.put("/menuItems", (req, res) => //Updates existing MenuItem with the given parameters
 {
   res.setHeader('Content-Type', 'application/json');
   pool.query("update menuitem set menuitemid = $1, title = $2, itemdescription = $3, price = $4, menuallergenes = $5, menucategory = $6 where menuitemid = $1",
@@ -85,9 +90,12 @@ app.put("/menuItems", (req, res) =>
 });
 
 
+/**
+ * Tables
+ * */
 
 
-app.get("/tables", (req, res) =>
+app.get("/tables", (req, res) => // Get all tables
 {
 
   res.setHeader('Content-Type', 'application/json');
@@ -98,6 +106,7 @@ app.get("/tables", (req, res) =>
     });
 });
 
+//Deletes the Table with the given id
 app.delete("/tables/:tablesid", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -110,6 +119,7 @@ app.delete("/tables/:tablesid", (req, res) =>
     })
 });
 
+//Inserts new item into Tables
 app.post("/tables", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -122,6 +132,7 @@ app.post("/tables", (req, res) =>
   });
 });
 
+//Updates existing Tables with the given parameters
 app.put("/tables", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -134,7 +145,11 @@ app.put("/tables", (req, res) =>
 });
 
 
-app.get("/users", (req, res) =>
+/**
+ * Users
+ * */
+
+app.get("/users", (req, res) => // Get all users
 {
 
   res.setHeader('Content-Type', 'application/json');
@@ -145,6 +160,7 @@ app.get("/users", (req, res) =>
     });
 });
 
+//Deletes the Table with the given id
 app.delete("/users/:userid", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -157,6 +173,7 @@ app.delete("/users/:userid", (req, res) =>
     })
 });
 
+//Inserts new item into Tables
 app.post("/users", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -169,7 +186,7 @@ app.post("/users", (req, res) =>
   });
 });
 
-
+//Updates existing Tables with the given parameters
 app.put("/users", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -182,10 +199,12 @@ app.put("/users", (req, res) =>
 });
 
 
+/**
+ * Categories
+ * */
 
 
-
-app.get("/categories", (req, res) =>
+app.get("/categories", (req, res) => // Get all categories
 {
 
   res.setHeader('Content-Type', 'application/json');
@@ -196,6 +215,7 @@ app.get("/categories", (req, res) =>
     });
 });
 
+//Deletes the Categorie with the given id
 app.delete("/categories/:categoryid", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -208,7 +228,7 @@ app.delete("/categories/:categoryid", (req, res) =>
     })
 });
 
-
+//Inserts new item into Categories
 app.post("/categories", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -221,6 +241,7 @@ app.post("/categories", (req, res) =>
   });
 });
 
+//Updates existing categorie with the given parameters
 app.put("/categories", (req, res) =>
 {
   res.setHeader('Content-Type', 'application/json');
@@ -231,6 +252,10 @@ app.put("/categories", (req, res) =>
     res.status(200).send();
   });
 });
+
+/*
+The following code is from our other teams to work with their views and was not written by us.
+ */
 
 app.get("/menuCategories/:title", (req, res) =>
 {
